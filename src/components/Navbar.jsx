@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X, ShoppingCart, User, ChevronDown, LogOut } from "lucide-react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 const NAV_LINKS = [
   { label: "Home", path: "/" },
@@ -10,7 +10,7 @@ const NAV_LINKS = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const link = useNavigate();
   return (
     <nav
       role="navigation"
@@ -21,8 +21,8 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Brand */}
-            <a
-              href="#"
+            <button
+              onClick={() => link("/")}
               aria-label="SkyMart home"
               className="flex items-center gap-2.5 group"
             >
@@ -34,7 +34,7 @@ const Navbar = () => {
               <span className="text-xl font-bold text-white tracking-tight">
                 Sky<span className="text-lime-400">Mart</span>
               </span>
-            </a>
+            </button>
 
             {/* Desktop Links */}
             <ul className="hidden md:flex items-center gap-1">
