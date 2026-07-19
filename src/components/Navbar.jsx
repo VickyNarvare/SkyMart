@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ShoppingCart, User, ChevronDown } from "lucide-react";
+import { Menu, X, ShoppingCart, User, ChevronDown, LogOut } from "lucide-react";
 
 const NAV_LINKS = ["Home", "Products", "Categories", "About"];
 
@@ -55,6 +55,17 @@ export default function SkyMartNavbar() {
 
             {/* Desktop Right */}
             <div className="hidden md:flex items-center gap-3">
+              {/* Profile Avatar */}
+              <button className="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 group">
+                <div className="w-8 h-8 rounded-lg bg-linear-to-br from-lime-400 to-lime-500 flex items-center justify-center shadow-sm shadow-lime-500/20 group-hover:shadow-lime-500/30 transition-shadow">
+                  <span className="text-black font-black text-sm">V</span>
+                </div>
+                <div className="text-left">
+                  <p className="text-white text-sm font-medium leading-tight">
+                    Vicky
+                  </p>
+                </div>
+              </button>
               {/* Cart Button */}
               <button
                 aria-label="Shopping cart"
@@ -66,19 +77,11 @@ export default function SkyMartNavbar() {
                 </span>
               </button>
 
-              {/* Profile Avatar */}
-              <button className="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 group">
-                <div className="w-8 h-8 rounded-lg bg-linear-to-br from-lime-400 to-lime-500 flex items-center justify-center shadow-sm shadow-lime-500/20 group-hover:shadow-lime-500/30 transition-shadow">
-                  <span className="text-black font-black text-sm">V</span>
-                </div>
-                <div className="text-left">
-                  <p className="text-white text-sm font-medium leading-tight">
-                    Vicky
-                  </p>
-                  <p className="text-gray-500 text-[11px] leading-tight">
-                    Profile
-                  </p>
-                </div>
+              <button
+                aria-label="Shopping cart"
+                className="relative p-2.5 rounded-xl text-gray-400 hover:text-lime-400 hover:bg-white/5 transition-all duration-300 group"
+              >
+                <LogOut className="w-5 h-5" strokeWidth={1.8} />
               </button>
             </div>
 
