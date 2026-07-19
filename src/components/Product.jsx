@@ -34,7 +34,7 @@ const Product = ({ product }) => {
   return (
     <div className="group bg-[#1a1a1a] rounded-2xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 flex flex-col">
       {/* Image */}
-      <div className="relative overflow-hidden bg-[#222] aspect-square">
+      <div className="relative overflow-hidden bg-[#222] aspect-4/3">
         <img
           src={thumbnail}
           alt={title}
@@ -60,7 +60,7 @@ const Product = ({ product }) => {
       </div>
 
       {/* Content */}
-      <div className="p-4 flex flex-col gap-3 flex-1">
+      <div className="p-3 flex flex-col gap-2 flex-1">
         {/* Brand & Category */}
         <div className="flex items-center gap-2 flex-wrap">
           {brand && (
@@ -74,18 +74,18 @@ const Product = ({ product }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-white font-semibold text-base leading-tight line-clamp-2">
+        <h3 className="text-white font-semibold text-sm leading-tight line-clamp-2">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+        <p className="text-gray-400 text-[11px] leading-relaxed line-clamp-1">
           {description}
         </p>
 
         {/* Price */}
         <div className="flex items-baseline gap-2">
-          <span className="text-2xl font-bold text-white">
+          <span className="text-xl font-bold text-white">
             ${discountedPrice}
           </span>
           {discountPercentage > 0 && (
@@ -161,7 +161,7 @@ const Product = ({ product }) => {
         )}
 
         {/* Action Button */}
-        <button className="mt-auto w-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2">
+        <button className="mt-auto w-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold py-2 rounded-xl transition-colors duration-200 flex items-center justify-center gap-1.5">
           <ShoppingCart className="w-4 h-4" />
           Add to Cart
         </button>
