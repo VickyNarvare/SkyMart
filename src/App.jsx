@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-// https://dummyjson.com/products ==> data products
 import MyRoutes from "./routes/myRoutes";
 const App = () => {
   return (
