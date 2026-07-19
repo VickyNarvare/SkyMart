@@ -4,8 +4,8 @@ import { NavLink, useNavigate } from "react-router";
 
 const NAV_LINKS = [
   { label: "Home", path: "/" },
-  { label: "About Us", path: "/about" },
   { label: "Products", path: "/products" },
+  { label: "About Us", path: "/about" },
 ];
 
 const Navbar = () => {
@@ -91,32 +91,30 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </div>3
+      </div>
+      3
       <div
         className={`md:hidden overflow-hidden transition-all duration-400 ease-in-out border-b border-white/6 bg-[#0b0b0b]/95 backdrop-blur-xl ${
           menuOpen ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
-          {/* {NAV_LINKS.map((label) => {
-            const isActive = activeLink === label;
+          {NAV_LINKS.map((elem) => {
             return (
-              <button
-                key={label}
+              <NavLink
+                to={elem.path}
+                key={elem.label}
                 onClick={() => {
-                  setActiveLink(label);
                   setMenuOpen(false);
                 }}
-                className={`px-4 py-3 rounded-xl text-sm font-medium text-left transition-all duration-300 ${
-                  isActive
-                    ? "bg-lime-400/10 text-lime-400"
-                    : "text-gray-400 hover:bg-white/5 hover:text-white"
-                }`}
+                className={
+                  "px-4 py-3 rounded-xl text-sm font-medium text-left transition-all duration-300 text-gray-400 hover:bg-white/5 hover:text-white"
+                }
               >
-                {label}
-              </button>
+                {elem.label}
+              </NavLink>
             );
-          })} */}
+          })}
 
           <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-3">
             <button className="flex items-center gap-3 px-4 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all duration-300">
