@@ -20,7 +20,6 @@ const Navbar = () => {
       <div className="border-b border-white/6 bg-[#0b0b0b]/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            {/* Brand */}
             <button
               onClick={() => link("/")}
               aria-label="SkyMart home"
@@ -35,8 +34,6 @@ const Navbar = () => {
                 Sky<span className="text-lime-400">Mart</span>
               </span>
             </button>
-
-            {/* Desktop Links */}
             <ul className="hidden md:flex items-center gap-1">
               {NAV_LINKS.map((e) => (
                 <NavLink key={e.path} to={e.path}>
@@ -52,10 +49,7 @@ const Navbar = () => {
                 </NavLink>
               ))}
             </ul>
-
-            {/* Desktop Right */}
             <div className="hidden md:flex items-center gap-3">
-              {/* Profile Avatar */}
               <button className="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 group">
                 <div className="w-8 h-8 rounded-lg bg-linear-to-br from-lime-400 to-lime-500 flex items-center justify-center shadow-sm shadow-lime-500/20 group-hover:shadow-lime-500/30 transition-shadow">
                   <span className="text-black font-black text-sm">V</span>
@@ -66,7 +60,6 @@ const Navbar = () => {
                   </p>
                 </div>
               </button>
-              {/* Cart Button */}
               <button
                 aria-label="Shopping cart"
                 className="relative p-2.5 rounded-xl text-gray-400 hover:text-lime-400 hover:bg-white/5 transition-all duration-300 group"
@@ -84,8 +77,6 @@ const Navbar = () => {
                 <LogOut className="w-5 h-5" strokeWidth={1.8} />
               </button>
             </div>
-
-            {/* Mobile Hamburger */}
             <button
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
@@ -100,9 +91,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Mobile Menu */}
+      </div>3
       <div
         className={`md:hidden overflow-hidden transition-all duration-400 ease-in-out border-b border-white/6 bg-[#0b0b0b]/95 backdrop-blur-xl ${
           menuOpen ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
@@ -130,7 +119,6 @@ const Navbar = () => {
           })} */}
 
           <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-3">
-            {/* Profile - Mobile */}
             <button className="flex items-center gap-3 px-4 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all duration-300">
               <div className="w-9 h-9 rounded-xl bg-linear-to-br from-lime-400 to-lime-500 flex items-center justify-center shadow-sm shadow-lime-500/20">
                 <span className="text-black font-black text-sm">V</span>

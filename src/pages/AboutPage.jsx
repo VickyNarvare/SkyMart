@@ -4,7 +4,6 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        {/* Heading */}
         <div className="text-center mb-14">
           <h1 className="text-4xl md:text-5xl font-bold">
             About <span className="text-lime-400">SkyMart</span>
@@ -16,9 +15,7 @@ const AboutPage = () => {
           </p>
         </div>
 
-        {/* About Content */}
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Image */}
           <div>
             <img
               src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=800"
@@ -26,8 +23,6 @@ const AboutPage = () => {
               className="rounded-3xl shadow-lg"
             />
           </div>
-
-          {/* Text */}
           <div>
             <h2 className="text-3xl font-semibold mb-4">Who We Are</h2>
 
@@ -49,8 +44,6 @@ const AboutPage = () => {
             </button>
           </div>
         </div>
-
-        {/* Features */}
         <div className="grid sm:grid-cols-3 gap-6 mt-20">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
             <h3 className="text-3xl font-bold text-lime-400">500+</h3>
@@ -72,4 +65,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage; 
+export default AboutPage;
