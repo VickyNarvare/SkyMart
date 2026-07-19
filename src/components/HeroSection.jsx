@@ -3,27 +3,27 @@ import { ArrowRight, ShoppingBag, Sparkles, Package } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <div className="relative max-w-7xl mx-auto mt-8 rounded-[32px] border border-white/15 bg-[#0b0b0b] overflow-hidden px-6 md:px-12 lg:px-16 py-16">
+    <div className="relative max-w-7xl mx-auto mt-8 rounded-4xl border border-white/15 bg-[#0b0b0b] overflow-hidden px-6 md:px-12 lg:px-16 py-16">
       {/* Grid Background */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-4"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
+            "linear-linear(rgba(255,255,255,0.15) 1px, transparent 1px), linear-linear(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
 
       {/* Radial Lime Glow */}
-      <div className="pointer-events-none absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-lime-500/20 blur-[120px]" />
-      <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 -right-32 w-[400px] h-[400px] rounded-full bg-lime-500/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -top-32 -left-32 w-125 h-125 rounded-full bg-lime-500/20 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 -right-32 w-100 h-100 rounded-full bg-lime-500/10 blur-[100px]" />
 
       {/* Soft Vignette */}
       <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.6)]" />
 
       {/* Blur Orbs */}
       <div className="pointer-events-none absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-lime-400/5 blur-[80px]" />
-      <div className="pointer-events-none absolute top-20 right-20 w-60 h-60 rounded-full bg-white/[0.02] blur-[60px]" />
+      <div className="pointer-events-none absolute top-20 right-20 w-60 h-60 rounded-full bg-white/2 blur-[60px]" />
 
       <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-8 items-center">
         {/* ============ LEFT CONTENT (70%) ============ */}
@@ -36,12 +36,11 @@ const HeroSection = () => {
 
           {/* Main Heading */}
           <h1 className="hero-fade-in-delay-1 font-black text-4xl sm:text-5xl lg:text-7xl leading-tight text-white">
-            Welcome back,{" "}
-            <span className="text-lime-400">Vicky!</span>
+            Welcome back, <span className="text-lime-400">Vicky!</span>
           </h1>
 
           {/* Description */}
-          <p className="hero-fade-in-delay-2 text-gray-400 text-lg sm:text-xl leading-relaxed max-w-[600px]">
+          <p className="hero-fade-in-delay-2 text-gray-400 text-lg sm:text-xl leading-relaxed max-w-150">
             Discover today's picks — hand-curated products across electronics,
             fashion, home essentials, and more.
           </p>
@@ -65,7 +64,7 @@ const HeroSection = () => {
         {/* ============ RIGHT CONTENT (30%) ============ */}
         <div className="hero-fade-in-delay-4 w-full lg:w-[30%] flex flex-row lg:flex-col gap-4">
           {/* Card 1 - Products Available */}
-          <div className="flex-1 lg:flex-none group relative rounded-3xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:border-lime-400/30 hover:shadow-[0_0_40px_-8px_rgba(166,255,60,0.2)] animate-[float_6s_ease-in-out_infinite]">
+          <div className="flex-1 lg:flex-none group relative rounded-3xl border border-white/8 bg-white/4 backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:border-lime-400/30 hover:shadow-[0_0_40px_-8px_rgba(166,255,60,0.2)] animate-[float_6s_ease-in-out_infinite]">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-5xl md:text-6xl font-black text-lime-400">
@@ -80,11 +79,11 @@ const HeroSection = () => {
               </div>
             </div>
             {/* Card glow on hover */}
-            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-lime-400/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-lime-400/5 to-transparent pointer-events-none" />
           </div>
 
           {/* Card 2 - Free Delivery */}
-          <div className="flex-1 lg:flex-none group relative rounded-3xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_40px_-8px_rgba(255,255,255,0.1)] animate-[float_6s_ease-in-out_infinite_1s]">
+          <div className="flex-1 lg:flex-none group relative rounded-3xl border border-white/8 bg-white/2 backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_40px_-8px_rgba(255,255,255,0.1)] animate-[float_6s_ease-in-out_infinite_1s]">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-5xl md:text-6xl font-black text-white">
@@ -99,7 +98,7 @@ const HeroSection = () => {
               </div>
             </div>
             {/* Card glow on hover */}
-            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
           </div>
         </div>
       </div>
