@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Menu, X, ShoppingCart, User, ChevronDown, LogOut } from "lucide-react";
+import { NavLink } from "react-router";
 
-const NAV_LINKS = ["Home", "Products", "Categories", "About"];
+const NAV_LINKS = [
+  { label: "Home", path: "/" },
+  { label: "About Us", path: "/about" },
+  { label: "Products", path: "/products" },
+];
 
-export default function SkyMartNavbar() {
-  const [activeLink, setActiveLink] = useState("Home");
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -34,23 +38,19 @@ export default function SkyMartNavbar() {
 
             {/* Desktop Links */}
             <ul className="hidden md:flex items-center gap-1">
-              {NAV_LINKS.map((label) => {
-                const isActive = activeLink === label;
-                return (
-                  <li key={label}>
+              {NAV_LINKS.map((e) => (
+                <NavLink key={e.path} to={e.path}>
+                  {() => (
                     <button
-                      onClick={() => setActiveLink(label)}
-                      className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
-                        isActive
-                          ? "text-lime-400 bg-lime-400/10"
-                          : "text-gray-400 hover:text-white hover:bg-white/5"
-                      }`}
+                      className={
+                        "px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 text-gray-400 hover:bg-white/5 hover:text-white"
+                      }
                     >
-                      {label}
+                      {e.label}
                     </button>
-                  </li>
-                );
-              })}
+                  )}
+                </NavLink>
+              ))}
             </ul>
 
             {/* Desktop Right */}
@@ -109,7 +109,7 @@ export default function SkyMartNavbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
-          {NAV_LINKS.map((label) => {
+          {/* {NAV_LINKS.map((label) => {
             const isActive = activeLink === label;
             return (
               <button
@@ -127,7 +127,7 @@ export default function SkyMartNavbar() {
                 {label}
               </button>
             );
-          })}
+          })} */}
 
           <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-3">
             {/* Profile - Mobile */}
@@ -157,4 +157,6 @@ export default function SkyMartNavbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
