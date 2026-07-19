@@ -1,136 +1,139 @@
-﻿import React from "react";
-import { Search, Zap, BarChart3, TrendingUp, Settings } from "lucide-react";
-import Navbar from "./Navbar";
-
-const FEATURE_TAGS = [
-  { icon: Zap, label: "Solar Panel" },
-  { icon: BarChart3, label: "Monitoring" },
-  { icon: TrendingUp, label: "Savings Upto 50%" },
-  { icon: Settings, label: "Easy Install" },
-];
-
-const STATS = [
-  { value: "10K+", label: "Businesses" },
-  { value: "50+", label: "Cities" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "24/7", label: "Support" },
-];
-
-const PRODUCTS = [
-  {
-    name: "Solar Panel",
-    desc: "High-efficiency panels for maximum energy output",
-    color: "from-amber-100 to-orange-50",
-  },
-  {
-    name: "Energy Monitor",
-    desc: "Real-time tracking of your energy consumption",
-    color: "from-sky-100 to-blue-50",
-  },
-  {
-    name: "Battery Storage",
-    desc: "Store excess energy for later use",
-    color: "from-violet-100 to-purple-50",
-  },
-];
+import React from "react";
+import { ArrowRight, ShoppingBag, Sparkles, Package } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen bg-gray-50">
-      <Navbar />
+    <div className="relative max-w-7xl mx-auto mt-8 rounded-[32px] border border-white/15 bg-[#0b0b0b] overflow-hidden px-6 md:px-12 lg:px-16 py-16">
+      {/* Grid Background */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
 
-      <main className="relative pt-32 pb-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-gray-600 text-sm font-medium mb-8 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            Trusted by 10k+ Businesses
+      {/* Radial Lime Glow */}
+      <div className="pointer-events-none absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-lime-500/20 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 -right-32 w-[400px] h-[400px] rounded-full bg-lime-500/10 blur-[100px]" />
+
+      {/* Soft Vignette */}
+      <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.6)]" />
+
+      {/* Blur Orbs */}
+      <div className="pointer-events-none absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-lime-400/5 blur-[80px]" />
+      <div className="pointer-events-none absolute top-20 right-20 w-60 h-60 rounded-full bg-white/[0.02] blur-[60px]" />
+
+      <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-8 items-center">
+        {/* ============ LEFT CONTENT (70%) ============ */}
+        <div className="w-full lg:w-[70%] space-y-8">
+          {/* Top Badge */}
+          <div className="hero-fade-in inline-flex items-center gap-2 uppercase tracking-[4px] text-lime-400 font-medium text-sm">
+            <Sparkles className="w-4 h-4" />
+            GOOD MORNING 👋
           </div>
 
-          {/* Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
-            Power Your Future With
-            <span className="block text-indigo-600">Solar</span>
+          {/* Main Heading */}
+          <h1 className="hero-fade-in-delay-1 font-black text-4xl sm:text-5xl lg:text-7xl leading-tight text-white">
+            Welcome back,{" "}
+            <span className="text-lime-400">Vicky!</span>
           </h1>
 
-          {/* Subtext */}
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed mb-10">
-            Clean energy solutions for your home and business.
-            Save money and reduce your carbon footprint.
+          {/* Description */}
+          <p className="hero-fade-in-delay-2 text-gray-400 text-lg sm:text-xl leading-relaxed max-w-[600px]">
+            Discover today's picks — hand-curated products across electronics,
+            fashion, home essentials, and more.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mb-12">
-            <button className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gray-900 text-white font-semibold text-sm hover:bg-gray-800 transition-all duration-300 shadow-lg shadow-gray-900/20">
-              Explore Products
+          <div className="hero-fade-in-delay-3 flex flex-col sm:flex-row items-center gap-4 pt-4">
+            {/* Primary Button */}
+            <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-lime-400 text-black font-semibold rounded-2xl px-8 py-4 text-base hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_-6px_rgba(166,255,60,0.35)] hover:shadow-[0_0_40px_-4px_rgba(166,255,60,0.55)]">
+              Shop Now
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-            <button className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-gray-300 text-gray-700 font-semibold text-sm hover:bg-white hover:border-gray-400 transition-all duration-300">
-              How It Works?
-            </button>
-          </div>
 
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto flex items-center gap-3 bg-white rounded-full border border-gray-200 shadow-sm px-2 py-2 mb-10">
-            <div className="flex items-center gap-2 flex-1 px-4">
-              <Search className="w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Explore Our Solutions..."
-                className="w-full text-sm text-gray-700 placeholder-gray-400 bg-transparent outline-none"
-              />
-            </div>
-            <button className="px-6 py-2.5 rounded-full bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-all duration-300 whitespace-nowrap">
-              Get a Free Consultation
+            {/* Secondary Button */}
+            <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/10 text-white font-semibold rounded-2xl px-8 py-4 text-base hover:bg-white/5 transition-all duration-300">
+              <ShoppingBag className="w-5 h-5" />
+              View All Products
             </button>
-          </div>
-
-          {/* Feature Tags */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-            {FEATURE_TAGS.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-gray-700 shadow-sm"
-              >
-                <Icon className="w-4 h-4 text-indigo-500" />
-                {label}
-              </div>
-            ))}
           </div>
         </div>
 
-        {/* Stats Bar */}
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-          {STATS.map(({ value, label }) => (
-            <div key={label} className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-gray-900">{value}</p>
-              <p className="text-sm text-gray-500 mt-1">{label}</p>
+        {/* ============ RIGHT CONTENT (30%) ============ */}
+        <div className="hero-fade-in-delay-4 w-full lg:w-[30%] flex flex-row lg:flex-col gap-4">
+          {/* Card 1 - Products Available */}
+          <div className="flex-1 lg:flex-none group relative rounded-3xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:border-lime-400/30 hover:shadow-[0_0_40px_-8px_rgba(166,255,60,0.2)] animate-[float_6s_ease-in-out_infinite]">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-5xl md:text-6xl font-black text-lime-400">
+                  20+
+                </p>
+                <p className="text-gray-400 text-sm md:text-base mt-2">
+                  Products Available
+                </p>
+              </div>
+              <div className="p-3 rounded-2xl bg-lime-400/10 border border-lime-400/20">
+                <Package className="w-6 h-6 text-lime-400" />
+              </div>
             </div>
-          ))}
-        </div>
+            {/* Card glow on hover */}
+            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-lime-400/5 to-transparent pointer-events-none" />
+          </div>
 
-        {/* Product Cards */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PRODUCTS.map(({ name, desc, color }) => (
-            <div
-              key={name}
-              className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300"
-            >
-              <div className={`h-44 bg-gradient-to-br ${color} flex items-center justify-center`}>
-                <div className="w-16 h-16 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center shadow-sm">
-                  <span className="text-2xl font-bold text-gray-700">{name.charAt(0)}</span>
-                </div>
+          {/* Card 2 - Free Delivery */}
+          <div className="flex-1 lg:flex-none group relative rounded-3xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl p-6 md:p-8 transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_40px_-8px_rgba(255,255,255,0.1)] animate-[float_6s_ease-in-out_infinite_1s]">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-5xl md:text-6xl font-black text-white">
+                  Free
+                </p>
+                <p className="text-gray-500 text-sm md:text-base mt-2">
+                  Delivery on ₹999+
+                </p>
               </div>
-              <div className="p-5">
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">{name}</h3>
-                <p className="text-sm text-gray-500 mb-4">{desc}</p>
-                <button className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors duration-300">
-                  View Products →
-                </button>
+              <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
+                <ShoppingBag className="w-6 h-6 text-white/70" />
               </div>
             </div>
-          ))}
+            {/* Card glow on hover */}
+            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+          </div>
         </div>
-      </main>
+      </div>
+
+      {/* Custom Animations */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes fadeSlideUp {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .hero-fade-in {
+          animation: fadeSlideUp 0.7s ease-out forwards;
+        }
+        .hero-fade-in-delay-1 {
+          animation: fadeSlideUp 0.7s ease-out 0.15s forwards;
+          opacity: 0;
+        }
+        .hero-fade-in-delay-2 {
+          animation: fadeSlideUp 0.7s ease-out 0.3s forwards;
+          opacity: 0;
+        }
+        .hero-fade-in-delay-3 {
+          animation: fadeSlideUp 0.7s ease-out 0.45s forwards;
+          opacity: 0;
+        }
+        .hero-fade-in-delay-4 {
+          animation: fadeSlideUp 0.7s ease-out 0.6s forwards;
+          opacity: 0;
+        }
+      `}</style>
     </div>
   );
 };
