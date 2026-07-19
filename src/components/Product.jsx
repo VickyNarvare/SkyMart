@@ -32,7 +32,7 @@ const Product = ({ product }) => {
         : "text-red-400";
 
   return (
-    <div className="group relative bg-[#141414] rounded-2xl overflow-hidden border border-white/[0.06] hover:border-lime-400/25 transition-all duration-500 hover:shadow-[0_0_40px_-12px_rgba(166,255,60,0.25)] hover:-translate-y-1 flex flex-col">
+    <div className="group relative bg-[#141414] rounded-2xl overflow-hidden border border-white/6 hover:border-lime-400/25 transition-all duration-500 hover:shadow-[0_0_40px_-12px_rgba(166,255,60,0.25)] hover:-translate-y-1 flex flex-col">
       {/* Card Glow on Hover */}
       <div className="pointer-events-none absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-lime-400/10 via-transparent to-lime-400/5 blur-xl" />
 
@@ -121,7 +121,7 @@ const Product = ({ product }) => {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[9px] text-gray-600 bg-white/[0.03] px-2 py-0.5 rounded-md capitalize border border-white/5"
+                className="text-[9px] text-gray-600 bg-white/3 px-2 py-0.5 rounded-md capitalize border border-white/5"
               >
                 #{tag}
               </span>
@@ -130,7 +130,7 @@ const Product = ({ product }) => {
         )}
 
         {/* Divider */}
-        <div className="border-t border-white/[0.04] my-0.5" />
+        <div className="border-t border-white/4 my-0.5" />
 
         {/* Meta Info Grid */}
         <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 text-[11px]">
