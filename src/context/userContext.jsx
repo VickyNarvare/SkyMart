@@ -4,7 +4,8 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
-    const [userData, setUserData] = useState([]);
+    const [usersData, setUsersData] = useState([]);
+    const [singleUserData, setSingleUserData] = useState({});
     const [allProductData, setAllProductData] = useState([]);
     const [addToCardItems, setAddToCardItems] = useState([]);
     const [addToCardOpen, setAddToCardOpen] = useState(false)
@@ -21,7 +22,7 @@ export const UserContextProvider = ({ children }) => {
         productData();
     }, []);
     return (
-        <UserContext.Provider value={{ userData, setUserData, allProductData, setAddToCardOpen, setAddToCardItems, addToCardOpen, addToCardItems }}>
+        <UserContext.Provider value={{ usersData, singleUserData, setSingleUserData, setUsersData, allProductData, setAddToCardOpen, setAddToCardItems, addToCardOpen, addToCardItems }}>
             {children}
         </UserContext.Provider>
     );

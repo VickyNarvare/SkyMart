@@ -13,7 +13,6 @@ const AddToCard = ({ setAddToCardOpen }) => {
 
     return (
         <>
-            {/* Overlay */}
             <div
                 onClick={() => setAddToCardOpen(false)}
                 className="fixed inset-0 z-55 bg-black/60 backdrop-blur-sm animate-fade-in"
