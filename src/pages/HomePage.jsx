@@ -6,7 +6,7 @@ const HomePage = () => {
     const link = useNavigate();
     return (
         <div className="relative max-w-7xl mx-auto mt-8 rounded-4xl border border-white/15 bg-[#0b0b0b] overflow-hidden px-6 md:px-12 lg:px-16 py-16">
-            {/* Grid Background */}
+
             <div
                 className="pointer-events-none absolute inset-0 opacity-4"
                 style={{
@@ -80,7 +80,7 @@ const HomePage = () => {
                                     Free
                                 </p>
                                 <p className="text-gray-500 text-sm md:text-base mt-2">
-                                    Delivery on ₹999+
+                                    Delivery on $99+
                                 </p>
                             </div>
                             <div className="p-3 rounded-2xl bg-white/5 border border-white/10">
