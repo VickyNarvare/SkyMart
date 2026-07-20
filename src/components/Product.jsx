@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Star, ShoppingCart, Package, Truck } from "lucide-react";
 import { useNavigate } from "react-router";
+import { UserContext } from "../context/userContext";
 
 const Product = ({ product }) => {
+    const { setAddToCardItems, addToCardItems, setAddToCardOpen } = useContext(UserContext)
     if (!product) return null;
     const { id, price, stock, discountPercentage, thumbnail, title, tags, reviews, availabilityStatus, description, shippingInformation, rating, images, brand, category } = product
     const discountedPrice = (price - (price * discountPercentage) / 100).toFixed(
@@ -141,7 +143,22 @@ const Product = ({ product }) => {
                     </div>
                 )}
 
-                <button className="mt-auto w-full bg-linear-to-r from-lime-400 to-lime-500 hover:from-lime-300 hover:to-lime-400 text-black text-xs font-bold py-2.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_-4px_rgba(166,255,60,0.15)] hover:shadow-[0_0_25px_-4px_rgba(166,255,60,0.35)] active:scale-[0.98]">
+                <button
+                    onClick={() => {
+                        setAddToCardItems((prev) => {
+                            const isExist = prev.find(item => item.id === product.id);
+                            if (isExist) {
+                                setAddToCardOpen(true)
+                                return prev.map(item =>
+                                    item.id === product.id
+                                        ? { ...item, quantity: item.quantity + 1 }
+                                        : item
+                                );
+                            }
+                            return [...prev, { ...product, quantity: 1 }];
+                        });
+                    }}
+                    className="mt-auto w-full bg-linear-to-r from-lime-400 to-lime-500 hover:from-lime-300 hover:to-lime-400 text-black text-xs font-bold py-2.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_-4px_rgba(166,255,60,0.15)] hover:shadow-[0_0_25px_-4px_rgba(166,255,60,0.35)] active:scale-[0.98]">
                     <ShoppingCart className="w-3.5 h-3.5" />
                     Add to Cart
                 </button>

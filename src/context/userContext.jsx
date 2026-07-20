@@ -6,6 +6,9 @@ export const UserContext = createContext();
 export const UserContextProvider = ({ children }) => {
     const [userData, setUserData] = useState([]);
     const [allProductData, setAllProductData] = useState([]);
+    const [addToCardItems, setAddToCardItems] = useState([]);
+    const [addToCardOpen, setAddToCardOpen] = useState(false)
+
     const productData = async () => {
         try {
             const { data } = await axios.get("https://dummyjson.com/products");
@@ -18,7 +21,7 @@ export const UserContextProvider = ({ children }) => {
         productData();
     }, []);
     return (
-        <UserContext.Provider value={{ userData, setUserData, allProductData }}>
+        <UserContext.Provider value={{ userData, setUserData, allProductData, setAddToCardOpen, setAddToCardItems, addToCardOpen, addToCardItems }}>
             {children}
         </UserContext.Provider>
     );

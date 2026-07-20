@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Menu, X, ShoppingCart, User, ChevronDown, LogOut } from "lucide-react";
 import { NavLink, useNavigate } from "react-router";
 import AddToCard from "./AddToCard";
+import { UserContext } from "../context/userContext";
 
 const NAV_LINKS = [
     { label: "Home", path: "/" },
@@ -11,7 +12,7 @@ const NAV_LINKS = [
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [addToCardOpen, setAddToCardOpen] = useState(false)
+    const { addToCardOpen, setAddToCardOpen } = useContext(UserContext)
     const link = useNavigate();
     console.log(addToCardOpen)
     return (

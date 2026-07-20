@@ -1,17 +1,15 @@
 import { X, ShoppingCart, Trash2, Minus, Plus, ArrowRight } from "lucide-react";
 import { UserContext } from "../context/userContext";
-import { useContext, useState } from "react";
-
+import { useContext } from "react";
 
 const AddToCard = ({ setAddToCardOpen }) => {
-    const { DUMMY_ITEMS, setDUMMY_ITEMS } = useState([]);
-    // const { allProductData } = useContext(UserContext)
+    const { addToCardItems } = useContext(UserContext)
 
-    const subtotal = DUMMY_ITEMS && DUMMY_ITEMS.reduce(
-        (acc, item) => acc + item.price * item.quantity,
+    const subtotal = addToCardItems && addToCardItems.reduce(
+        (acc, item) => acc + item.price * (item.quantity || 1),
         0
     );
-    const totalItems = DUMMY_ITEMS && DUMMY_ITEMS.reduce((acc, item) => acc + item.quantity, 0);
+    const totalItems = addToCardItems && addToCardItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
     return (
         <>
@@ -51,14 +49,14 @@ const AddToCard = ({ setAddToCardOpen }) => {
 
                 {/* Cart Items */}
                 <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 custom-scrollbar">
-                    {DUMMY_ITEMS && DUMMY_ITEMS.length === 0 ? (
+                    {addToCardItems && addToCardItems.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full text-center py-12">
                             <ShoppingCart className="w-16 h-16 text-gray-700 mb-4" strokeWidth={1.2} />
                             <h3 className="text-white font-medium text-lg">Your cart is empty</h3>
                             <p className="text-gray-500 text-sm mt-1">Add some products to get started</p>
                         </div>
                     ) : (
-                        DUMMY_ITEMS && DUMMY_ITEMS.map((item) => (
+                        addToCardItems && addToCardItems.map((item) => (
                             <div
                                 key={item.id}
                                 className="group flex gap-4 bg-[#141414] rounded-xl p-3.5 border border-white/6 hover:border-white/10 transition-all duration-300"
@@ -125,7 +123,7 @@ const AddToCard = ({ setAddToCardOpen }) => {
                 {/* Footer */}
                 <div className="border-t border-white/6 px-6 py-5 space-y-4 bg-[#0d0d0d]">
 
-                    {DUMMY_ITEMS?.length > 0 && (
+                    {addToCardItems.length > 0 && (
                         <div className="space-y-2 text-sm">
                             <div className="flex items-center justify-between text-gray-400  text-lg">
                                 <span>Subtotal</span>
