@@ -209,9 +209,9 @@ const FullProductPage = () => {
                             <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">
                                 Dimensions
                             </p>
-                            {/* <p className="text-sm text-white font-medium mt-0.5">
-                                {p.dimensions.width} × {p.dimensions.height} × {p.dimensions.depth} cm
-                            </p> */}
+                            <p className="text-sm text-white font-medium mt-0.5">
+                                {p?.dimensions?.width} × {p?.dimensions?.height} × {p?.dimensions?.depth} cm
+                            </p>
                         </div>
                     </div>
 
@@ -266,43 +266,9 @@ const FullProductPage = () => {
                             <p className="text-sm text-white font-medium mt-0.5">{p.returnPolicy}</p>
                         </div>
                     </div>
-
-                    {/* Barcode */}
-                    <div className="bg-[#141414] border border-white/5 rounded-xl p-4 flex items-start gap-3 hover:border-lime-400/15 transition-all duration-300">
-                        <div className="p-2.5 bg-lime-400/10 rounded-lg">
-                            <Barcode className="w-4 h-4 text-lime-400" />
-                        </div>
-                        <div>
-                            <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">
-                                Barcode
-                            </p>
-                            <p className="text-sm text-white font-medium mt-0.5">{p.meta?.barcode}</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            {/* ── QR Code Section ── */}
-            <div className="max-w-7xl mx-auto px-4 pb-10">
-                <div className="bg-[#141414] border border-white/5 rounded-xl p-5 flex flex-col sm:flex-row items-center gap-5 hover:border-lime-400/15 transition-all duration-300">
-                    <div className="p-3 bg-white rounded-xl">
-                        <img
-                            src={p.meta?.qrCode}
-                            alt="QR Code"
-                            className="w-20 h-20 object-contain"
-                        />
-                    </div>
-                    <div>
-                        <p className="text-sm font-semibold text-white flex items-center gap-2">
-                            <QrCode className="w-4 h-4 text-lime-400" />
-                            Product QR Code
-                        </p>
-                        <p className="text-xs text-gray-500 mt-1">
-                            Scan this code to view product details on your mobile device.
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             {/* ── Reviews Section ── */}
             <div className="max-w-7xl mx-auto px-4 pb-16">

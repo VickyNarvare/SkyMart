@@ -1,38 +1,17 @@
 import { X, ShoppingCart, Trash2, Minus, Plus, ArrowRight } from "lucide-react";
+import { UserContext } from "../context/userContext";
+import { useContext, useState } from "react";
 
-const DUMMY_ITEMS = [
-    {
-        id: 1,
-        title: "iPhone 15 Pro Max",
-        price: 1099.99,
-        quantity: 1,
-        thumbnail: "https://cdn.dummyjson.com/products/images/smartphones/iPhone%2015%20Pro%20Max/thumbnail.png",
-        brand: "Apple",
-    },
-    {
-        id: 2,
-        title: "Classic Leather Jacket",
-        price: 249.99,
-        quantity: 2,
-        thumbnail: "https://cdn.dummyjson.com/products/images/womens-bags/Women%20Leather%20Shoulder%20Bag/thumbnail.png",
-        brand: "Fashion Hub",
-    },
-    {
-        id: 3,
-        title: "Wireless Noise-Canceling Headphones",
-        price: 349.99,
-        quantity: 1,
-        thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20-%20Blazing%20Sun/thumbnail.png",
-        brand: "Sony",
-    },
-];
 
 const AddToCard = ({ setAddToCardOpen }) => {
-    const subtotal = DUMMY_ITEMS.reduce(
+    const { DUMMY_ITEMS, setDUMMY_ITEMS } = useState([]);
+    // const { allProductData } = useContext(UserContext)
+
+    const subtotal = DUMMY_ITEMS && DUMMY_ITEMS.reduce(
         (acc, item) => acc + item.price * item.quantity,
         0
     );
-    const totalItems = DUMMY_ITEMS.reduce((acc, item) => acc + item.quantity, 0);
+    const totalItems = DUMMY_ITEMS && DUMMY_ITEMS.reduce((acc, item) => acc + item.quantity, 0);
 
     return (
         <>
@@ -72,14 +51,14 @@ const AddToCard = ({ setAddToCardOpen }) => {
 
                 {/* Cart Items */}
                 <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 custom-scrollbar">
-                    {DUMMY_ITEMS.length === 0 ? (
+                    {DUMMY_ITEMS && DUMMY_ITEMS.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full text-center py-12">
                             <ShoppingCart className="w-16 h-16 text-gray-700 mb-4" strokeWidth={1.2} />
                             <h3 className="text-white font-medium text-lg">Your cart is empty</h3>
                             <p className="text-gray-500 text-sm mt-1">Add some products to get started</p>
                         </div>
                     ) : (
-                        DUMMY_ITEMS.map((item) => (
+                        DUMMY_ITEMS && DUMMY_ITEMS.map((item) => (
                             <div
                                 key={item.id}
                                 className="group flex gap-4 bg-[#141414] rounded-xl p-3.5 border border-white/6 hover:border-white/10 transition-all duration-300"
@@ -144,25 +123,21 @@ const AddToCard = ({ setAddToCardOpen }) => {
                 </div>
 
                 {/* Footer */}
-                {DUMMY_ITEMS.length > 0 && (
-                    <div className="border-t border-white/6 px-6 py-5 space-y-4 bg-[#0d0d0d]">
+                <div className="border-t border-white/6 px-6 py-5 space-y-4 bg-[#0d0d0d]">
 
-                        {/* Price breakdown */}
+                    {DUMMY_ITEMS?.length > 0 && (
                         <div className="space-y-2 text-sm">
                             <div className="flex items-center justify-between text-gray-400  text-lg">
                                 <span>Subtotal</span>
                                 <span>${subtotal.toFixed(2)}</span>
                             </div>
-
                         </div>
-
-                        {/* Checkout button */}
-                        <button className="w-full flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-500 text-black font-semibold py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg shadow-lime-500/20 hover:shadow-lime-500/30">
-                            Proceed to Checkout
-                            <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
-                        </button>
-                    </div>
-                )}
+                    )}
+                    <button className="w-full flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-500 text-black font-semibold py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg shadow-lime-500/20 hover:shadow-lime-500/30">
+                        Proceed to Checkout
+                        <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+                    </button>
+                </div>
             </div>
 
             {/* Custom animation styles */}
