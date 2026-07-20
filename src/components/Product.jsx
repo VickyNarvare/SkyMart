@@ -155,6 +155,7 @@ const Product = ({ product }) => {
                                         : item
                                 );
                             }
+                            setAddToCardOpen(true)
                             return [...prev, { ...product, quantity: 1 }];
                         });
                     }}

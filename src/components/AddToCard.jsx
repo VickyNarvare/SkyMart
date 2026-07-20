@@ -27,7 +27,7 @@ const AddToCard = ({ setAddToCardOpen }) => {
                         <div className="relative">
                             <ShoppingCart className="w-6 h-6 text-lime-400" strokeWidth={1.8} />
                             <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-[1.1rem] min-h-[1.1rem] text-[10px] font-bold text-black bg-lime-400 rounded-full leading-none px-1">
-                                {totalItems}
+                                {addToCardItems.length}
                             </span>
                         </div>
                         <div>
@@ -35,8 +35,7 @@ const AddToCard = ({ setAddToCardOpen }) => {
                                 Shopping Cart
                             </h2>
                             <p className="text-gray-500 text-xs">
-                                {totalItems} item{totalItems !== 1 && "s"}
-                            </p>
+                                {addToCardItems.length} Items  </p>
                         </div>
                     </div>
                     <button

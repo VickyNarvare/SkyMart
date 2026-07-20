@@ -12,9 +12,8 @@ const NAV_LINKS = [
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { addToCardOpen, setAddToCardOpen } = useContext(UserContext)
+    const { addToCardOpen, setAddToCardOpen, addToCardItems } = useContext(UserContext)
     const link = useNavigate();
-    console.log(addToCardOpen)
     return (
         <>
             <nav
@@ -72,7 +71,7 @@ const Navbar = () => {
                                 >
                                     <ShoppingCart className="w-5 h-5" strokeWidth={1.8} />
                                     <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[1.1rem] min-h-[1.1rem] text-[10px] font-bold text-black bg-lime-400 rounded-full leading-none px-1 group-hover:scale-110 transition-transform duration-300">
-                                        5
+                                        {addToCardItems.length}
                                     </span>
                                 </button>
 
@@ -142,7 +141,7 @@ const Navbar = () => {
                                 className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-white/10 text-gray-400 text-sm font-medium hover:bg-white/5 hover:text-white transition-all duration-300"
                             >
                                 <ShoppingCart className="w-4 h-4" />
-                                Cart (3)
+                                Cart ({addToCardItems.length && 0})
                             </button>
                         </div>
                     </div>

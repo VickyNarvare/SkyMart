@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     Star,
     Package,
@@ -22,8 +22,10 @@ import {
 } from "lucide-react";
 import { useParams } from "react-router";
 import axios from "axios";
+import { UserContext } from "../context/userContext";
 const FullProductPage = () => {
     const [productData, setProductData] = useState({})
+    const { setAddToCardItems, setAddToCardOpen } = useContext(UserContext)
     const { id } = useParams()
     const getSingleProduct = async () => {
         try {
@@ -169,7 +171,23 @@ const FullProductPage = () => {
 
                         {/* Action Buttons */}
                         <div className="flex items-center gap-3 pt-2">
-                            <button className="flex-1 bg-linear-to-r from-lime-400 to-lime-500 hover:from-lime-300 hover:to-lime-400 text-black font-bold py-3.5 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2.5 shadow-[0_0_30px_-6px_rgba(166,255,60,0.2)] hover:shadow-[0_0_35px_-4px_rgba(166,255,60,0.4)] active:scale-[0.98] text-sm">
+                            <button
+                                onClick={() => {
+                                    setAddToCardItems((prev) => {
+                                        const isExist = prev.find(item => item.id === p.id);
+                                        if (isExist) {
+                                            setAddToCardOpen(true)
+                                            return prev.map(item =>
+                                                item.id === p.id
+                                                    ? { ...item, quantity: item.quantity + 1 }
+                                                    : item
+                                            );
+                                        }
+                                        setAddToCardOpen(true)
+                                        return [...prev, { ...p, quantity: 1 }];
+                                    });
+                                }}
+                                className="flex-1 bg-linear-to-r from-lime-400 to-lime-500 hover:from-lime-300 hover:to-lime-400 text-black font-bold py-3.5 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2.5 shadow-[0_0_30px_-6px_rgba(166,255,60,0.2)] hover:shadow-[0_0_35px_-4px_rgba(166,255,60,0.4)] active:scale-[0.98] text-sm">
                                 <ShoppingCart className="w-4 h-4" />
                                 Add to Cart
                             </button>
