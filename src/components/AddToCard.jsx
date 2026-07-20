@@ -1,10 +1,10 @@
 import { X, ShoppingCart, Trash2, Minus, Plus, ArrowRight } from "lucide-react";
 import { UserContext } from "../context/userContext";
 import { useContext } from "react";
+import Product from "./Product";
 
 const AddToCard = ({ setAddToCardOpen }) => {
-    const { addToCardItems } = useContext(UserContext)
-
+    const { addToCardItems, setAddToCardItems } = useContext(UserContext)
     const subtotal = addToCardItems && addToCardItems.reduce(
         (acc, item) => acc + item.price * (item.quantity || 1),
         0
@@ -90,13 +90,34 @@ const AddToCard = ({ setAddToCardOpen }) => {
                                     <div className="flex items-center justify-between mt-2">
                                         {/* Quantity controls */}
                                         <div className="flex items-center gap-1 bg-[#1c1c1c] rounded-lg border border-white/6 p-0.5">
-                                            <button className="p-1 rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-all duration-200">
+                                            <button
+                                                onClick={() => {
+                                                    setAddToCardItems(prev =>
+                                                        prev
+                                                            .map(cartItem =>
+                                                                cartItem.id === item.id
+                                                                    ? {
+                                                                        ...cartItem,
+                                                                        quantity: cartItem.quantity - 1,
+                                                                    }
+                                                                    : cartItem
+                                                            )
+                                                            .filter(cartItem => cartItem.quantity > 0)
+                                                    );
+                                                }}
+                                                className="p-1 rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-all duration-200">
                                                 <Minus className="w-3.5 h-3.5" strokeWidth={2.5} />
                                             </button>
                                             <span className="w-8 text-center text-white text-sm font-medium select-none">
                                                 {item.quantity}
                                             </span>
-                                            <button className="p-1 rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-all duration-200">
+                                            <button
+                                                onClick={() => setAddToCardItems((prev) => prev.map(product =>
+                                                    item.id === product.id
+                                                        ? { ...item, quantity: item.quantity + 1 }
+                                                        : item
+                                                ))}
+                                                className="p-1 rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-all duration-200">
                                                 <Plus className="w-3.5 h-3.5" strokeWidth={2.5} />
                                             </button>
                                         </div>
@@ -130,15 +151,17 @@ const AddToCard = ({ setAddToCardOpen }) => {
                             </div>
                         </div>
                     )}
-                    <button className="w-full flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-500 text-black font-semibold py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg shadow-lime-500/20 hover:shadow-lime-500/30">
+                    <button
+                        onClick={() => { setAddToCardItems([]) }}
+                        className="w-full flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-500 text-black font-semibold py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg shadow-lime-500/20 hover:shadow-lime-500/30">
                         Proceed to Checkout
                         <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
                     </button>
                 </div>
-            </div>
+            </div >
 
             {/* Custom animation styles */}
-            <style>{`
+            < style > {`
                 @keyframes slide-in {
                     from { transform: translateX(100%); }
                     to { transform: translateX(0); }
