@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import RegistrationPage from "./pages/RegistrationPage";
-import MyRoutes from "./routes/myRoutes";
+import MyRoutes from "./routes/MyRoutes";
 import { UserContext } from "./context/userContext";
 const App = () => {
     const { mainScreen } = useContext(UserContext)
