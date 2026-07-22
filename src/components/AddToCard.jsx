@@ -121,11 +121,15 @@ const AddToCard = ({ setAddToCardOpen }) => {
                                                 {item.quantity}
                                             </span>
                                             <button
-                                                onClick={() => setAddToCardItems((prev) => prev.map(product =>
-                                                    item.id === product.id
-                                                        ? { ...item, quantity: item.quantity + 1 }
-                                                        : item
-                                                ))}
+                                                onClick={() =>
+                                                    setAddToCardItems(prev =>
+                                                        prev.map(product =>
+                                                            product.id === item.id
+                                                                ? { ...product, quantity: product.quantity + 1 }
+                                                                : product
+                                                        )
+                                                    )
+                                                }
                                                 className="p-1 rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-all duration-200">
                                                 <Plus className="w-3.5 h-3.5" strokeWidth={2.5} />
                                             </button>
@@ -162,7 +166,6 @@ const AddToCard = ({ setAddToCardOpen }) => {
                     )}
                     <button
                         onClick={() => {
-                            <CheckoutOverlay />
                             setCheckoutOpen(true)
                         }}
                         className="w-full flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-500 text-black font-semibold py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg shadow-lime-500/20 hover:shadow-lime-500/30">
