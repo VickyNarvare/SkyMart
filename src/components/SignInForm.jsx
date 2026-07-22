@@ -1,19 +1,32 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const SignInForm = () => {
-    const { setSingleUserData, singleUserData } = useContext(UserContext)
+    const { setSingleUserData, usersData, setMainScreen } = useContext(UserContext)
     const { register, handleSubmit, reset } = useForm();
-    const submitHandler = (data) => {
-        localStorage.setItem("user", JSON.stringify(data))
-        setSingleUserData(data);
+    let loginFormSubmit = (data) => {
+        const user = usersData.find(val =>
+            val.userEmail === data.email &&
+            val.userPassword === data.password
+        );
+
+        if (!user) {
+            toast.error("Invalid Email or Password");
+            reset();
+            return;
+        }
+
+        setSingleUserData(user);
+        localStorage.setItem("user", JSON.stringify(user));
+        toast.success("User Login Successfully");
+        setMainScreen(true);
         reset();
-        return data;
-    }
+    };
     return (
         <form
-            onSubmit={handleSubmit(submitHandler)}
+            onSubmit={handleSubmit(loginFormSubmit)}
             className="flex flex-col items-center justify-center h-full px-6 md:px-12 text-center bg-[#0d0d0d]">
             <h1 className="font-bold text-xl md:text-2xl m-0 text-white">
                 Sign In

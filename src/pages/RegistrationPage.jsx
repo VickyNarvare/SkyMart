@@ -13,7 +13,6 @@ const RegistrationPage = () => {
                         "0 14px 28px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.4)",
                 }}
             >
-                {/* SkyMart Logo */}
                 <div className="flex items-center justify-center gap-2.5 pt-5 pb-1 md:pt-6 md:pb-2">
                     <div className="w-9 h-9 rounded-xl bg-linear-to-br from-lime-400 to-lime-500 flex items-center justify-center shadow-lg shadow-lime-500/25">
                         <span className="text-black font-black text-base tracking-tight">S</span>

@@ -74,7 +74,6 @@ const FullProductPage = () => {
             {/* Main product section */}
             <div className="max-w-7xl mx-auto px-4 py-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
-                    {/* ── Image Gallery ── */}
                     <div className="space-y-4">
                         <div className="relative bg-[#141414] rounded-2xl overflow-hidden border border-white/6 group">
                             <div className="pointer-events-none absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br from-lime-400/10 via-transparent to-lime-400/5 blur-xl" />
@@ -83,13 +82,11 @@ const FullProductPage = () => {
                                 alt={p?.title || "Product image"}
                                 className="w-full h-full max-h-125 object-contain p-8 group-hover:scale-105 transition-transform duration-700 ease-out"
                             />
-                            {/* Discount badge */}
                             {p.discountPercentage > 0 && (
                                 <div className="absolute top-4 left-4 bg-linear-to-br from-red-500 to-red-600 text-white text-sm font-bold px-3.5 py-1.5 rounded-xl shadow-lg backdrop-blur-sm">
                                     -{Math.round(p.discountPercentage)}%
                                 </div>
                             )}
-                            {/* Rating badge */}
                             <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-black/60 backdrop-blur-lg text-yellow-400 text-sm font-semibold px-3 py-1.5 rounded-xl border border-white/5 shadow-lg">
                                 <Star className="w-4 h-4 fill-yellow-400" />
                                 {p.rating?.toFixed(1)}
@@ -99,9 +96,7 @@ const FullProductPage = () => {
 
                     </div>
 
-                    {/* ── Product Info ── */}
                     <div className="space-y-6">
-                        {/* Brand & Category */}
                         <div className="flex items-center gap-3 flex-wrap">
                             {p.brand && (
                                 <span className="text-xs font-bold text-lime-400 bg-lime-400/10 px-3 py-1 rounded-full uppercase tracking-wider border border-lime-400/15">
@@ -116,17 +111,14 @@ const FullProductPage = () => {
                             </span>
                         </div>
 
-                        {/* Title */}
                         <h1 className="text-3xl xl:text-4xl font-bold text-white leading-tight">
                             {p.title}
                         </h1>
 
-                        {/* Description */}
                         <p className="text-gray-400 leading-relaxed text-base">
                             {p.description}
                         </p>
 
-                        {/* Price */}
                         <div className="flex items-baseline gap-3">
                             <span className="text-4xl font-bold text-white tracking-tight">
                                 ${discountedPrice}
@@ -143,7 +135,6 @@ const FullProductPage = () => {
                             )}
                         </div>
 
-                        {/* Tags */}
                         {p.tags && p.tags.length > 0 && (
                             <div className="flex gap-2 flex-wrap">
                                 {p.tags.map((tag) => (
@@ -157,7 +148,6 @@ const FullProductPage = () => {
                             </div>
                         )}
 
-                        {/* Availability & Stock */}
                         <div className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-xl border ${stockBg} ${stockColor}`}>
                             {p.availabilityStatus === "In Stock" ? (
                                 <CheckCircle className="w-4 h-4" />
@@ -170,7 +160,6 @@ const FullProductPage = () => {
                             <span className="text-sm">{p.stock} units available</span>
                         </div>
 
-                        {/* Action Buttons */}
                         <div className="flex items-center gap-3 pt-2">
                             <button
                                 onClick={() => {
@@ -203,7 +192,6 @@ const FullProductPage = () => {
                             </button>
                         </div>
 
-                        {/* Minimum Order Notice */}
                         <div className="bg-[#141414] border border-white/5 rounded-xl px-4 py-3 flex items-center gap-3">
                             <AlertCircle className="w-4 h-4 text-yellow-400 shrink-0" />
                             <span className="text-sm text-gray-400">
@@ -215,14 +203,12 @@ const FullProductPage = () => {
                 </div>
             </div>
 
-            {/* ── Details Grid ── */}
             <div className="max-w-7xl mx-auto px-4 py-10">
                 <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                     <span className="w-1 h-6 bg-lime-400 rounded-full inline-block" />
                     Product Details
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {/* Dimensions */}
                     <div className="bg-[#141414] border border-white/5 rounded-xl p-4 flex items-start gap-3 hover:border-lime-400/15 transition-all duration-300">
                         <div className="p-2.5 bg-lime-400/10 rounded-lg">
                             <Ruler className="w-4 h-4 text-lime-400" />
@@ -237,7 +223,6 @@ const FullProductPage = () => {
                         </div>
                     </div>
 
-                    {/* Weight */}
                     <div className="bg-[#141414] border border-white/5 rounded-xl p-4 flex items-start gap-3 hover:border-lime-400/15 transition-all duration-300">
                         <div className="p-2.5 bg-lime-400/10 rounded-lg">
                             <Weight className="w-4 h-4 text-lime-400" />
@@ -250,7 +235,6 @@ const FullProductPage = () => {
                         </div>
                     </div>
 
-                    {/* Warranty */}
                     <div className="bg-[#141414] border border-white/5 rounded-xl p-4 flex items-start gap-3 hover:border-lime-400/15 transition-all duration-300">
                         <div className="p-2.5 bg-lime-400/10 rounded-lg">
                             <Shield className="w-4 h-4 text-lime-400" />
@@ -263,7 +247,6 @@ const FullProductPage = () => {
                         </div>
                     </div>
 
-                    {/* Shipping */}
                     <div className="bg-[#141414] border border-white/5 rounded-xl p-4 flex items-start gap-3 hover:border-lime-400/15 transition-all duration-300">
                         <div className="p-2.5 bg-lime-400/10 rounded-lg">
                             <Truck className="w-4 h-4 text-lime-400" />
@@ -276,7 +259,6 @@ const FullProductPage = () => {
                         </div>
                     </div>
 
-                    {/* Return Policy */}
                     <div className="bg-[#141414] border border-white/5 rounded-xl p-4 flex items-start gap-3 hover:border-lime-400/15 transition-all duration-300">
                         <div className="p-2.5 bg-lime-400/10 rounded-lg">
                             <RotateCcw className="w-4 h-4 text-lime-400" />
@@ -292,7 +274,6 @@ const FullProductPage = () => {
             </div>
 
 
-            {/* ── Reviews Section ── */}
             <div className="max-w-7xl mx-auto px-4 pb-16">
                 <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                     <span className="w-1 h-6 bg-lime-400 rounded-full inline-block" />
@@ -302,7 +283,6 @@ const FullProductPage = () => {
                     </span>
                 </h2>
 
-                {/* Rating Summary */}
                 <div className="bg-[#141414] border border-white/5 rounded-xl p-5 mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
                     <div className="flex flex-col items-center">
                         <span className="text-4xl font-bold text-white">{p.rating?.toFixed(1)}</span>
@@ -340,7 +320,6 @@ const FullProductPage = () => {
                     </div>
                 </div>
 
-                {/* Reviews List */}
                 <div className="space-y-4">
                     {p.reviews?.map((review, i) => (
                         <div

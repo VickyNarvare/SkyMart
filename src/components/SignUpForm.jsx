@@ -1,20 +1,24 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../context/userContext";
+import { toast } from "react-toastify";
 
 const SignUpForm = () => {
     const { register, handleSubmit, reset } = useForm();
-    const { setUsersData, usersData } = useContext(UserContext);
-    const submitHandler = (data) => {
-        const allUsers = [...usersData, data]
-        localStorage.setItem("allUser", JSON.stringify(allUsers))
-        setUsersData(allUsers);
+    const { setUsersData, usersData, setSingleUserData, setMainScreen } = useContext(UserContext);
+    let registerFormSubmit = (data) => {
+        let arr = [...usersData, data];
+        setUsersData(arr);
+        toast.success("user registered successfully");
+        setSingleUserData(data);
+        setMainScreen(true);
+        localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("allUser", JSON.stringify(arr));
         reset();
-        return allUsers;
     };
     return (
         <form
-            onSubmit={handleSubmit(submitHandler)}
+            onSubmit={handleSubmit(registerFormSubmit)}
             className="flex flex-col items-center justify-center h-full px-6 md:px-12 text-center bg-[#0d0d0d]"
         >
             <h1 className="font-bold text-xl md:text-2xl m-0 text-white">

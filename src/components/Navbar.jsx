@@ -12,8 +12,9 @@ const NAV_LINKS = [
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { addToCardOpen, setAddToCardOpen, addToCardItems } = useContext(UserContext)
+    const { addToCardOpen, setSingleUserData, setAddToCardOpen, addToCardItems, setMainScreen, singleUserData } = useContext(UserContext)
     const link = useNavigate();
+
     return (
         <>
             <nav
@@ -56,11 +57,13 @@ const Navbar = () => {
                             <div className="hidden md:flex items-center gap-3">
                                 <button className="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 group">
                                     <div className="w-8 h-8 rounded-lg bg-linear-to-br from-lime-400 to-lime-500 flex items-center justify-center shadow-sm shadow-lime-500/20 group-hover:shadow-lime-500/30 transition-shadow">
-                                        <span className="text-black font-black text-sm">V</span>
+                                        <span className="text-black font-black text-sm">
+                                            {singleUserData?.userName?.charAt(0)?.toUpperCase() || "U"}
+                                        </span>
                                     </div>
                                     <div className="text-left">
                                         <p className="text-white text-sm font-medium leading-tight">
-                                            Vicky
+                                            {singleUserData.userName}
                                         </p>
                                     </div>
                                 </button>
@@ -76,8 +79,12 @@ const Navbar = () => {
                                 </button>
 
                                 <button
-                                    aria-label="Shopping cart"
-                                    className="relative p-2.5 rounded-xl text-gray-400 hover:text-lime-400 hover:bg-white/5 transition-all duration-300 group"
+                                    onClick={() => {
+                                        localStorage.removeItem("user");
+                                        setMainScreen(false);
+                                    }}
+                                    aria-label="Log out"
+                                    className="relative p-2.5 rounded-xl text-gray-400 hover:text-red-400 hover:bg-white/5 transition-all duration-300 group"
                                 >
                                     <LogOut className="w-5 h-5" strokeWidth={1.8} />
                                 </button>
@@ -124,11 +131,11 @@ const Navbar = () => {
                         <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-3">
                             <button className="flex items-center gap-3 px-4 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all duration-300">
                                 <div className="w-9 h-9 rounded-xl bg-linear-to-br from-lime-400 to-lime-500 flex items-center justify-center shadow-sm shadow-lime-500/20">
-                                    <span className="text-black font-black text-sm">V</span>
+                                    <span className="text-black font-black text-sm">         {singleUserData?.userName?.charAt(0)?.toUpperCase() || "U"}</span>
                                 </div>
                                 <div className="text-left">
                                     <p className="text-white text-sm font-medium leading-tight">
-                                        Vicky
+                                        {singleUserData.userName}
                                     </p>
                                     <p className="text-gray-500 text-xs leading-tight">
                                         View Profile

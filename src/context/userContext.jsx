@@ -3,13 +3,21 @@ import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
 
+const safeParse = (value) => {
+    try {
+        return JSON.parse(value);
+    } catch {
+        return null;
+    }
+};
+
 export const UserContextProvider = ({ children }) => {
-    const [usersData, setUsersData] = useState(JSON.parse(localStorage.getItem("allUser")) || []);
-    const [singleUserData, setSingleUserData] = useState(JSON.parse(localStorage.getItem("user")));
+    const [usersData, setUsersData] = useState(safeParse(localStorage.getItem("allUser")) || []);
+    const [singleUserData, setSingleUserData] = useState(safeParse(localStorage.getItem("user")));
     const [allProductData, setAllProductData] = useState([]);
     const [addToCardItems, setAddToCardItems] = useState([]);
     const [addToCardOpen, setAddToCardOpen] = useState(false)
-    const [mainScreen, setMainScreen] = useState(false)
+    const [mainScreen, setMainScreen] = useState(!!safeParse(localStorage.getItem("user")))
 
 
     const productData = async () => {

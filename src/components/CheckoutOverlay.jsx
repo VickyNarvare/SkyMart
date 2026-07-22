@@ -10,7 +10,6 @@ const CheckoutOverlay = ({ open, onClose, total }) => {
     <div className="fixed inset-0 z-999 flex items-center justify-center bg-black/70 backdrop-blur-md">
       <div className="w-[95%] max-w-lg rounded-3xl border border-white/10 bg-[#181818] p-6 shadow-2xl animate-in fade-in zoom-in duration-200">
 
-        {/* Header */}
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold text-white">
             Checkout
@@ -23,8 +22,6 @@ const CheckoutOverlay = ({ open, onClose, total }) => {
             <X size={20} className="text-white" />
           </button>
         </div>
-
-        {/* Address */}
 
         <div className="mt-5 rounded-2xl bg-[#222] p-4 flex gap-3">
           <MapPin className="text-lime-400 mt-1" />
@@ -42,8 +39,6 @@ const CheckoutOverlay = ({ open, onClose, total }) => {
           </div>
         </div>
 
-        {/* Payment */}
-
         <div className="mt-5 rounded-2xl bg-[#222] p-4 flex gap-3">
           <CreditCard className="text-lime-400 mt-1" />
 
@@ -58,8 +53,6 @@ const CheckoutOverlay = ({ open, onClose, total }) => {
           </div>
         </div>
 
-        {/* Total */}
-
         <div className="mt-6 flex justify-between border-t border-white/10 pt-5">
           <span className="text-lg text-gray-300">
             Total
@@ -69,8 +62,6 @@ const CheckoutOverlay = ({ open, onClose, total }) => {
             ${total}
           </span>
         </div>
-
-        {/* Buttons */}
 
         <div className="mt-7 flex gap-3">
 
