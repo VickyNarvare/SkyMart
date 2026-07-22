@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import RegistrationPage from "./pages/RegistrationPage";
 import MyRoutes from "./routes/myRoutes";
+import { UserContext } from "./context/userContext";
 const App = () => {
-    const [mainScreen, setMainScreen] = useState(true)
+    const { mainScreen } = useContext(UserContext)
     return (
         <div>
             {
