@@ -13,7 +13,6 @@ const MyRoutes = () => {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/products" element={<ProductsPage />} />
                 <Route path="/products/:id" element={<FullProductPage />} />
-
             </Routes>
         </div>
     );

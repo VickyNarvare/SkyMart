@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Star, ShoppingCart, Package, Truck } from "lucide-react";
 import { useNavigate } from "react-router";
 import { UserContext } from "../context/userContext";
+import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
     const { setAddToCardItems, addToCardItems, setAddToCardOpen } = useContext(UserContext)
@@ -149,6 +150,7 @@ const Product = ({ product }) => {
                             const isExist = prev.find(item => item.id === product.id);
                             if (isExist) {
                                 setAddToCardOpen(true)
+                                toast.success("Product Added in card")
                                 return prev.map(item =>
                                     item.id === product.id
                                         ? { ...item, quantity: item.quantity + 1 }
@@ -158,13 +160,15 @@ const Product = ({ product }) => {
                             setAddToCardOpen(true)
                             return [...prev, { ...product, quantity: 1 }];
                         });
-                    }}
+                        toast.success("Product Added in card")
+                    }
+                    }
                     className="mt-auto w-full bg-linear-to-r from-lime-400 to-lime-500 hover:from-lime-300 hover:to-lime-400 text-black text-xs font-bold py-2.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_-4px_rgba(166,255,60,0.15)] hover:shadow-[0_0_25px_-4px_rgba(166,255,60,0.35)] active:scale-[0.98]">
                     <ShoppingCart className="w-3.5 h-3.5" />
                     Add to Cart
                 </button>
             </div>
-        </div>
+        </div >
     );
 };
 

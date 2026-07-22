@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import RegistrationPage from "./pages/RegistrationPage";
 import MyRoutes from "./routes/myRoutes";
 const App = () => {
-    const [mainScreen, setMainScreen] = useState(false)
+    const [mainScreen, setMainScreen] = useState(true)
     return (
         <div>
             {

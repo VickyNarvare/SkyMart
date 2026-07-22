@@ -23,6 +23,7 @@ import {
 import { useParams } from "react-router";
 import axios from "axios";
 import { UserContext } from "../context/userContext";
+import { toast } from "react-toastify";
 const FullProductPage = () => {
     const [productData, setProductData] = useState({})
     const { setAddToCardItems, setAddToCardOpen } = useContext(UserContext)
@@ -177,6 +178,8 @@ const FullProductPage = () => {
                                         const isExist = prev.find(item => item.id === p.id);
                                         if (isExist) {
                                             setAddToCardOpen(true)
+                                            toast.success("Product Added in card")
+
                                             return prev.map(item =>
                                                 item.id === p.id
                                                     ? { ...item, quantity: item.quantity + 1 }
@@ -184,6 +187,7 @@ const FullProductPage = () => {
                                             );
                                         }
                                         setAddToCardOpen(true)
+                                        toast.success("Product Added in card")
                                         return [...prev, { ...p, quantity: 1 }];
                                     });
                                 }}

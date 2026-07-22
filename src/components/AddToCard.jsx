@@ -1,7 +1,10 @@
 import { X, ShoppingCart, Trash2, Minus, Plus, ArrowRight } from "lucide-react";
 import { UserContext } from "../context/userContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Product from "./Product";
+import CheckoutOverlay from "./CheckoutOverlay";
+import { toast } from "react-toastify";
+
 
 const AddToCard = ({ setAddToCardOpen }) => {
     const { addToCardItems, setAddToCardItems } = useContext(UserContext)
@@ -10,7 +13,7 @@ const AddToCard = ({ setAddToCardOpen }) => {
         0
     );
     const totalItems = addToCardItems && addToCardItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
-
+    const [checkoutOpen, setCheckoutOpen] = useState(false);
     return (
         <>
             <div
@@ -80,7 +83,14 @@ const AddToCard = ({ setAddToCardOpen }) => {
                                                     {item.brand}
                                                 </span>
                                             </div>
-                                            <button className="p-1 rounded-lg text-gray-600 hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all duration-200">
+                                            <button
+                                                onClick={() => {
+                                                    setAddToCardItems(prev => {
+                                                        toast.error("Product Removed in Card!");
+                                                        return prev.filter(cartItem => cartItem.id !== item.id);
+                                                    });
+                                                }}
+                                                className="p-1 rounded-lg text-gray-600 hover:text-red-400 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all duration-200">
                                                 <Trash2 className="w-4 h-4" strokeWidth={1.8} />
                                             </button>
                                         </div>
@@ -151,11 +161,19 @@ const AddToCard = ({ setAddToCardOpen }) => {
                         </div>
                     )}
                     <button
-                        onClick={() => { setAddToCardItems([]) }}
+                        onClick={() => {
+                            <CheckoutOverlay />
+                            setCheckoutOpen(true)
+                        }}
                         className="w-full flex items-center justify-center gap-2 bg-lime-400 hover:bg-lime-500 text-black font-semibold py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98] shadow-lg shadow-lime-500/20 hover:shadow-lime-500/30">
                         Proceed to Checkout
                         <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
                     </button>
+                    <CheckoutOverlay
+                        open={checkoutOpen}
+                        onClose={() => setCheckoutOpen(false)}
+                        total={subtotal.toFixed(2)}
+                    />
                 </div>
             </div >
 
